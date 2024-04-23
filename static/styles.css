@@ -1,0 +1,189 @@
+/* Archivo styles.css implementado en tickets.html*/
+
+.clearfix::after{
+    content: "";
+    clear:both;
+    display: table;
+}
+.navbar{
+    background-color: #126e81;
+    overflow: hidden;
+}
+.navbar a{
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+body{
+    background-color: #333;
+    margin: 0;
+    padding: 0;
+}
+h1, p, label{
+    color: white;
+}
+select {
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #333;
+}
+
+.left-content {
+    background-color: white;
+    padding: 20px;
+    height: auto;
+    width: 60px;
+    border-radius: 10px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-right: 10px; 
+}
+
+.right-content {
+    background-color: white;
+    padding: 20px;
+    height: auto;
+    width: 70px;
+    border-radius: 10px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-left: 10px; 
+}
+.btn-confirmar {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.btn-confirmar i {
+    margin-right: 5px; 
+}
+
+
+@media screen and (max-width: 768px){
+    .container{
+        flex-direction: column;
+        padding: 10px;
+    }
+    .left-content,
+    .right-content{
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+.button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+    justify-content: center;
+    color: #e8e8e8;
+    background-color: #212121;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    text-transform: uppercase;
+    border: 2px solid #941010;
+    border-radius: 50%;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+    box-shadow: 5px 5px 2px rgba(0, 0, 0, 0.15),
+      2px 2px 2px rgba(0, 0, 0, 0.1),
+      -3px -3px 2px rgba(255, 255, 255, 0.05),
+      -2px -2px 1px rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+    cursor: pointer;
+  }
+  
+  .button .span {
+    position: relative;
+    z-index: 2;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+  }
+  
+  .button::before {
+    content: "";
+    position: absolute;
+    background-color: #e8e8e8;
+    width: 150%;
+    height: 150%;
+    left: 0%;
+    bottom: 0%;
+    transform: translate(-100%, 100%) rotate(45deg);
+    border-radius: 15px;
+  }
+  
+  .button:hover::before {
+    animation: shakeBack 0.6s forwards 0.6s;
+  }
+  
+  .button:hover .span {
+    scale: 1.2;
+  }
+  
+  .button:hover {
+    box-shadow: none;
+  }
+  
+  .button:active {
+    scale: 0.95;
+  }
+  
+  @keyframes shakeBack {
+    0% {
+      transform: translate(-100%, 100%) rotate(45deg);
+    }
+  
+    50% {
+      transform: translate(15%, -15%) rotate(45deg);
+    }
+  
+    100% {
+      transform: translate(-10%, 10%) rotate(45deg);
+    }
+  }
+  
+
+  .table-wrapper {
+    width: 100%;
+    height: 400px; 
+    overflow: auto;
+    margin-left: 20px;
+    border-radius: 20px;
+  }
+  
+  .table-wrapper table {
+    border-collapse: separate;
+    border-spacing: 1;
+  }
+  
+  .table-wrapper table thead {
+    position: -webkit-sticky; /* Safari... */
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+  
+  .table-wrapper table thead th,
+  .table-wrapper table tbody td {
+    border: 1px solid #bd1919;
+    background-color: #FFF;
+  }

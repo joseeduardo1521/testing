@@ -1,0 +1,104 @@
+/* Archivo styles.css implementado en tickets.html*/
+
+.clearfix::after{
+    content: "";
+    clear:both;
+    display: table;
+}
+.navbar{
+    background-color: #126e81;
+    overflow: hidden;
+}
+.navbar a{
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+}
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+body{
+    background-color: #333;
+    margin: 0;
+    padding: 0;
+}
+h1, p, label{
+    color: white;
+}
+select {
+    padding: 5px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+.container {
+    display: flex;
+    align-items: stretch; 
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .card {
+    width: 300px;
+    margin: 20px;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    min-height: 300px; 
+}
+
+  
+  .card:hover {
+    transform: translateY(-20px);
+  }
+  
+  .card-img {
+    width: 100%;
+    height: auto;
+    filter: drop-shadow(0 0 10px rgba (0,0,0, .8)
+)
+  }
+  
+  .card-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+  
+  .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .card-description {
+    margin-bottom: 20px;
+    font-size: 1rem; /* Ajustar el tamaño de fuente según sea necesario */
+    color: #555; /* Color de texto de la descripción */
+  }
+  
+  
+  .card-button {
+    background-color: #166F81;
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 11px 20px;
+    width: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .card-button:hover {
+    background-color: #114e63;
+  }
+  

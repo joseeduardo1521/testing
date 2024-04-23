@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard General</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/favicon.ico') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+
+</head>
+<body>
+    {% if 'usuario' in session %}
+
+    <div class="navbar">
+        <a href="/">Inicio</a>
+        <a href="/tickets">Tickets</a>
+        <a style="float: right" href="/logout" onclick="cerrarSesion()">Cerrar sesión</a>
+    </div>
+    <div class="container">
+        <div class="left-content">
+            <div id="graphDiv"></div>
+            <div id="cantidad_estados"></div>
+        </div>
+        <div class="right-content">
+            <div id="graphDivBar"></div>
+        </div>
+    </div>
+    <div id="tabla_tickets"></div>
+
+    <form id="filterForm">
+        <label for="fecha_inicio">Fecha de inicio:</label>
+        <input type="date" id="fecha_inicio" name="fecha_inicio">
+        <label for="fecha_fin">Fecha de fin:</label>
+        <input type="date" id="fecha_fin" name="fecha_fin">
+        <!-- Menú desplegable para sucursales -->
+        <select id="sucursal" name="sucursal">
+            <option value="25">N1 CDMX</option>
+            <option value="31">N2 CDMX</option>
+            <option value="26">N1 GDL</option>
+            <option value="32">N2 GDL</option>        
+            <option value="27">N1 LEON</option>
+            <option value="33">N2 LEON</option>        
+            <option value="28">N1 MTY</option>
+            <option value="34">N2 MTY</option>
+            <option value="30">N1 EDOMEX</option>
+            <option value="36">N2 EDOMEX</option>
+            <option value="29">N1 QRO</option>
+            <option value="35">N2 QRO</option>
+            <option value="7297">N1 TJ</option>
+            <option value="7298">N2 TJ</option>
+        </select>
+        <select id="tipo_ticket" name="tipo_ticket">
+            <option value="I">Incidentes</option>
+            <option value="R">Requerimientos</option>
+        </select>
+        <button type="submit" id="submitFilter" class="button">
+            <span class="span">🔎</span>
+    </form>
+    <script>
+        
+        var graphJSON = {{ graphJSON | tojson }};
+        var graphJSON_barras = {{ graphJSON_barras | tojson }};
+
+       
+        Plotly.newPlot('graphDiv', JSON.parse(graphJSON), {});
+
+        
+        Plotly.newPlot('graphDivBar', graphJSON_barras, {});
+
+        
+        document.getElementById('filterForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var fecha_inicio = document.getElementById('fecha_inicio').value;
+            var fecha_fin = document.getElementById('fecha_fin').value;
+            var ref = document.getElementById('tipo_ticket').value;
+            var team_id = document.getElementById('sucursal').value; 
+            
+          
+            if (fecha_inicio === fecha_fin) {
+                alert("¡Las fechas de inicio y fin no pueden ser iguales!");
+                return; 
+            }
+           
+            if(fecha_inicio > fecha_fin){
+                alert("!La fecha inicial puede ser mayor a la fecha inicial");
+                return;
+            }
+
+            console.log("team_id seleccionado:", team_id); 
+            console.log("ref: ", ref);
+            
+            fetch('/actualizar_grafico', {
+    method: 'POST',
+    body: JSON.stringify({ fecha_inicio: fecha_inicio, fecha_fin: fecha_fin, team_id: team_id, ref: ref }),
+    headers: {
+        'Content-Type': 'application/json'
+    }
+})
+
+            .then(response => response.json())
+            .then(data => {
+                
+                Plotly.react('graphDiv', JSON.parse(data.graphJSON_pastel));
+             
+                Plotly.react('graphDivBar', JSON.parse(data.graphJSON_barras));
+                
+               
+            });
+        });
+    </script>
+
+<script>
+  
+    function cerrarSesion() {
+      
+        window.close();
+        
+        window.location.href = "/login.html";
+    }
+</script>
+{% else %}
+<script>
+    window.location.replace("/login");
+</script>
+{% endif %}
+
+</body>
+</html>

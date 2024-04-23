@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styleslogin.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/animation.css') }}">
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/favicon.ico') }}">
+  <title>Inicio de sesión</title>
+</head>
+<body>
+
+
+    <div class="loading-animation">
+        <svg class="pl" width="240" height="240" viewBox="0 0 240 240">
+            <circle class="pl__ring pl__ring--a" cx="120" cy="120" r="105" fill="none" stroke="#f42f25" stroke-width="20" stroke-dasharray="0 660" stroke-dashoffset="-330" stroke-linecap="round"></circle>
+            <circle class="pl__ring pl__ring--b" cx="120" cy="120" r="35" fill="none" stroke="#f49725" stroke-width="20" stroke-dasharray="0 220" stroke-dashoffset="-110" stroke-linecap="round"></circle>
+            <circle class="pl__ring pl__ring--c" cx="85" cy="120" r="70" fill="none" stroke="#255ff4" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+            <circle class="pl__ring pl__ring--d" cx="155" cy="120" r="70" fill="none" stroke="#f42582" stroke-width="20" stroke-dasharray="0 440" stroke-linecap="round"></circle>
+        </svg>
+    </div>
+    
+
+
+  <div class="container" id="container">
+    
+      <div class="form-container sign-in">
+        <img src="{{ url_for('static', filename='limaclogo.png') }}" alt="Logo" class="login-logo">
+          <form method="post" action="/login">
+              <h1>Iniciar sesión</h1>
+              <span>Ingrese ID y Contraseña para ingresar</span>
+              <input type="text" name="id" placeholder="Ingrese ID" required>
+              <input type="password" name="login" placeholder="Ingrese contraseña" required>
+              <button type="submit" id="topac">INGRESAR</button> 
+          </form>
+      </div>
+      <div class="toggle-container">
+          <div class="toggle">
+              <div class="toggle-panel toggle-left">
+                  <h1>Yo quiero ir a casa... a casa</h1>
+                  <p>Que le ponemos aqui</p>
+                  <button class="hidden" id="login">Sign In</button>
+              </div>
+              <div class="toggle-panel toggle-right">
+                  <h1>¿Olvidaste tu ID o contraseña?</h1>
+                  <p>Puedes levantar un ticket para recuperar los accesos</p>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+
+</body>
+</html>

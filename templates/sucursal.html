@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='/card.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='/favicon.ico') }}">
+    <title>Tickets por sucursal</title>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Inicio</a>
+        <a href="/tickets">Tickets</a>
+        <a href="/sucursal">Sucursales</a>
+    </div>
+
+    <br>
+    <br>
+
+
+
+            <div class="container">
+              <div class="card">
+                  <!-- Contenido de la tarjeta 1 -->
+                  <img src="{{ url_for('static', filename='/limaclogo.png') }}" alt="Imagen 1" class="card-img">
+                  <div class="card-content">
+                  <h3 class="card-title">Asesoría Limac Sucursal GDL</h3>
+                  <p class="card-description">Incidentes y requerimientos sucursal Guadalajara</p>
+                  <button class="card-button" onclick="window.location.href='/gdl'">Ir a GDL</button>
+              </div>
+              </div>
+              <div class="card">
+                <img src="{{ url_for('static', filename='/limaclogo.png') }}" alt="Imagen 1" class="card-img">
+                <div class="card-content">
+                  <h3 class="card-title">Asesoría limac Sucursal CDMX</h3>
+                  <p class="card-description">Incidentes y requerimientos sucursal Ciudad de México</p>
+                  <button class="card-button" onclick="window.location.href='/cmd'">Ir a CDMX</button>
+                </div>
+              </div>
+              <!-- Repetir para las tarjetas restantes -->
+              <div class="card">
+                <img src="{{ url_for('static', filename='/limaclogo.png') }}" alt="Imagen 1" class="card-img">
+                <div class="card-content">
+                  <h3 class="card-title">Asesoría limac Sucursal EDOMEX</h3>
+                  <p class="card-description">Incidentes y requerimientos sucursal Estado de México</p>
+                  <button class="card-button" onclick="windows.location.href=''/edom">Ir a EDOMEX</button>
+                </div>
+              </div>
+              <div class="card">
+                <img src="{{ url_for('static', filename='/limaclogo.png') }}" alt="Imagen 1" class="card-img">
+              </div>
+              <div class="card">
+                <img src="{{ url_for('static', filename='/limaclogo.png') }}" alt="Imagen 1" class="card-img">
+              </div>
+          </div>
+
+
+
+</body>
+</html>
+
+
